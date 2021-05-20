@@ -1,0 +1,69 @@
+show databases;
+use organization;
+desc employee;
+(i) Add 5 rows in the employee and dept tables
+mysql> INSERT INTO employee VALUES(1001,"RaviKumar",'1970-03-20',"RaviVilla",'2014-05-17',9898786756,5,20000,"clerk");
+Query OK, 1 row affected (0.09 sec)
+
+mysql> INSERT INTO employee VALUES(1002,"Rajeev Menon",'1970-03-20',"Rajeev Bhavan",'2017-02-03',9567655678,7,25000,"Junior Assistant");
+Query OK, 1 row affected (0.07 sec)
+
+mysql> INSERT INTO employee VALUES(1003,"AryaLekshmi",'1960-07-30',"AryaBhavan",'2017-02-15',9567643218,5,30000,"Junior Assistant");
+Query OK, 1 row affected (0.06 sec)
+
+mysql> INSERT INTO employee VALUES(1004,"SandhyaNair",'1990-07-30',"SandhyaBhavan",'2019-02-15',9512345618,9,30000,"Typist");
+Query OK, 1 row affected (0.11 sec)
+
+mysql> INSERT INTO employee VALUES(1005,"KiranKumar",'1995-07-30',"KiranVilla",'2018-03-15',9533567818,6,30000,"Typist");
+Query OK, 1 row affected (0.07 sec)
+
+
+
+mysql> INSERT INTO department VALUES(1007,"Markrting","kollam");
+Query OK, 1 row affected (0.15 sec)
+
+mysql>  INSERT INTO department VALUES(1008,"Sales","Trivandrum");
+Query OK, 1 row affected (0.10 sec)
+
+mysql>  INSERT INTO department VALUES(1009,"sales","kollam");
+Query OK, 1 row affected (0.07 sec)
+
+mysql>  INSERT INTO department VALUES(1010,"Production","kochi");
+Query OK, 1 row affected (0.05 sec)
+
+mysql>  INSERT INTO department VALUES(1011,"Maintenance","kochi");
+Query OK, 1 row affected (0.04 sec)
+
+(ii)Display all the records from the above tables
+select * from employee;
+select * from department;
+
+iii) Display the empno and name of all the employees from department no 2?
+select empno,emp_name from employee where dept_no=2;
+
+(iv) Display empno,name,designation,dept no and salary in the descending order of salary
+ select empno,emp_name,designation,salary,dept_no from employee ORDER BY salary DESC;
+
+(v) Display the empno and name of all employees whose salary is between 2000 and 5000
+select empno,emp_name from employee where salary between 20000 and 50000;
+
+(vi) Display all designations without duplicate values.
+SELECT DISTINCT designation from employee;
+
+(vii) Display the department name and total salary of employees of each department.
+ select department.dept_name,sum(employee.salary) from employee inner join department on department.dept_no=employee.dept_no group by department.dept_name having sum(employee.salary)>25000;
+
+ (viii) Change the salary of employees to 25000 whose designation is ‘Typist’
+update employee set salary=25000 where designation="Typist"; 
+
+(ix)	Change the mobile no of employee named SandhyaNair
+update employee set mobile_no="9787675678" WHERE emp_name ="SandhyaNair";
+
+x)	Delete all employees whose salaries are equal to Rs.25000?
+delete from employee where salary=25000;
+
+(xi) Select the department that has total salary paid for its employees more than 25000
+select dept_name from employee where salary>25000;
+
+
+
