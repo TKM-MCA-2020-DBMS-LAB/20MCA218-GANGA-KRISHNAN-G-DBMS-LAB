@@ -51,7 +51,7 @@ select empno,emp_name from employee where salary between 20000 and 50000;
 SELECT DISTINCT designation from employee;
 
 (vii) Display the department name and total salary of employees of each department.
- select department.dept_name,sum(employee.salary) from employee inner join department on department.dept_no=employee.dept_no group by department.dept_name having sum(employee.salary)>25000;
+ select department.dept_name,sum(employee.salary) from employee inner join department on  employee.dept_no=department.dept_no group by employee.dept_no;
 
  (viii) Change the salary of employees to 25000 whose designation is ‘Typist’
 update employee set salary=25000 where designation="Typist"; 
